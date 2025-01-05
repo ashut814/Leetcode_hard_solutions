@@ -63,7 +63,7 @@
             result.push_back(u);
             q.pop();
             
-            for(int &v : adj[u]){
+            for(int &v : adj[u]){ 
                 inDegree[v]--;
                 if(inDegree[v] == 0){
                     q.push(v);
