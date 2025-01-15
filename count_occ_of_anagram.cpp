@@ -7,7 +7,7 @@ class Solution {
             }
         }
         return true;
-    }
+    } 
     int search(string &pat, string &txt) {
        int n = txt.length();
        int k = pat.length();
