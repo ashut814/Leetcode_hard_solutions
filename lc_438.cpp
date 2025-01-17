@@ -32,3 +32,5 @@ public:
         return ans;
     }
 };
+
+// tc -> O(n)
