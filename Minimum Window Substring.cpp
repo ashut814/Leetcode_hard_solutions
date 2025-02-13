@@ -10,7 +10,7 @@ public:
         int reqSize = t.length();
         int i = 0, j = 0;
         int minWindow = INT_MAX;
-        int minStart = 0;
+        int minStart = 0; 
         while(j < n){
             char ch_j = s[j];
             if(mp[ch_j] > 0)
