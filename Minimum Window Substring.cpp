@@ -1,4 +1,4 @@
-class Solution {
+ class Solution {
 public:
     string minWindow(string s, string t) {
         int n = s.length();
