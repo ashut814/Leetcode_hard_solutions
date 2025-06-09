@@ -2,24 +2,20 @@ class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
         int n = grid.size();
-        int missing = -1, repeat = -1;
-
-
-        unordered_map<int,int>freq;
-        for(auto &row : grid){
-            for(int num : row){
-                freq[num]++;
+        int size = n*n;
+        vector<int>freq(size+1,0);
+        int repeated = -1, missing = -1;
+        for(const auto&row: grid){
+            for(int col : row ){
+                freq[col]++;
             }
         }
 
-        for(int i = 1; i <= n*n ; i++){
-            if(!freq.count(i)){
-                missing = i;
-            } else if(freq[i] == 2){
-                repeat = i;
-            }
+        for(int i = 1; i <= size; i++){
+            if(freq[i] == 2) repeated = i;
+            if(freq[i] == 0) missing = i; 
         }
 
-        return {repeat,missing};
+        return {repeated,missing};
     }
 };
