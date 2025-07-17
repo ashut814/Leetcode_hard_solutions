@@ -6,7 +6,7 @@ public:
         for(int i = 0 ; i < n; i++){
             if(inDegree[i] == 0){
                 q.push(i);
-                count++;
+                count++; 
             }
         }
  
