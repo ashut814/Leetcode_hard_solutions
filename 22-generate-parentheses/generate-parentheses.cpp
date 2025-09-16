@@ -1,42 +1,29 @@
 class Solution {
 public:
     vector<string> result;
-    int N;
 
-    bool isValid(string &str) {
-        int total_count = 0;
-        for (char &ch : str) {
-            if (ch == '(') {
-                total_count++;
-            } else {
-                total_count--;
-            }
-            if (total_count < 0) return false;
-        }
-        return total_count == 0;
-    }
-
-    void solve(string &current, int n) {
+    void solve(string &current, int open, int close, int n) {
         if (current.length() == 2 * n) {
-            if (isValid(current)) {
-                result.push_back(current);
-            }
+            result.push_back(current);
             return;
         }
 
-        current.push_back('(');   // ✅ char literal
-        solve(current, n);
-        current.pop_back();
+        if (open < n) { // Add '(' if we still can
+            current.push_back('(');
+            solve(current, open + 1, close, n);
+            current.pop_back();
+        }
 
-        current.push_back(')');   // ✅ char literal
-        solve(current, n);
-        current.pop_back();
+        if (close < open) { // Add ')' if it won’t make it invalid
+            current.push_back(')');
+            solve(current, open, close + 1, n);
+            current.pop_back();
+        }
     }
 
     vector<string> generateParenthesis(int n) {
-        N = n;
-        string current = "";
-        solve(current, n);
+        string current;
+        solve(current, 0, 0, n);
         return result;
     }
 };
